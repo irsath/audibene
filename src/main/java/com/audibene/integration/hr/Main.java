@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) throws PulsarClientException {
         Timer t = new Timer();
         UserApiPullTask mTask = new UserApiPullTask(new UserResource(), new UserEventProducer());
-        t.scheduleAtFixedRate(mTask, 0, Duration.ofSeconds(30).toMillis());
+        t.scheduleAtFixedRate(mTask, 0, Duration.ofMinutes(5).toMillis());
     }
 
 }

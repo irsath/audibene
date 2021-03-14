@@ -38,7 +38,6 @@ public class UserApiPullTask extends TimerTask {
                 logger.error("Unable to publish event for user.", e);
             }
         }
-
         logger.info("Found {} users", users.size());
     }
 
