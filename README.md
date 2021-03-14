@@ -4,7 +4,7 @@ This solution:
 * is not resilient in case of any failure
 * doesn't persist it state (so a reboot will push back every user into pulsar)
 * may have a high memory footprint on first run
-* suppose that the number of item returned by a get on users resource is constant and defined by the "limit" property within the http response
+* make the assumption that the number of item returned by a get on users resource is constant and defined by the "limit" property within the http response
 
 Performance can be improved by:
 * using async http call to gorest api
@@ -20,4 +20,6 @@ Memory footprint can be improved by:
 Code quality can be improved by:
 * tests (of course)
 * using a structured serialization format like Avro from which we can generate java classes
-* writing a proper pulsar connector (https://pulsar.apache.org/docs/en/io-overview/) 
+* writing a proper pulsar connector (https://pulsar.apache.org/docs/en/io-overview/)
+* static codee analysis tool like sonar
+* test using locally hosted pulsar / mocking gorest api's
