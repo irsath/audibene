@@ -3,7 +3,6 @@ package com.audibene.integration.hr;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -13,7 +12,7 @@ public class ApplicationProperties {
     private final static Properties prop = new Properties();
 
     static {
-        try (InputStream input = new FileInputStream("application.properties")) {
+        try (InputStream input = ApplicationProperties.class.getClassLoader().getResourceAsStream("application.properties")) {
             prop.load(input);
         } catch (IOException ex) {
             logger.error("Unable to load application properties.", ex);
