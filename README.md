@@ -14,8 +14,7 @@ Performance can be improved by:
 * using a compact serialization format like Avro with pulsar
 
 Memory footprint can be improved by:
-* streaming api http call to pulasr
-* persisting the AlreadyKnownUsers structure
+* streaming api http call to pulsar
 
 Code quality can be improved by:
 * tests (of course)
