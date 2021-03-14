@@ -1,5 +1,6 @@
 package com.audibene.integration.hr.source;
 
+import com.audibene.integration.hr.ApplicationProperties;
 import com.audibene.integration.hr.source.struct.User;
 import com.audibene.integration.hr.source.struct.UserRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,21 +20,20 @@ import java.util.stream.IntStream;
 
 public class UserResource {
 
-    private final static String GO_REST_API_BASE_URL = "https://gorest.co.in/public-api/";
-    private final static String USER_RESOURCE = "users";
+    private final static String GO_REST_API_BASE_URL = ApplicationProperties.get("go.rest.api.base.url");
+    private final static String USER_RESOURCE = ApplicationProperties.get("go.rest.api.resource.user");
     private final static ObjectMapper OBJECT_MAPPER = new ObjectMapper().registerModule(new JavaTimeModule());
 
-    public List<User> getUsers() {
-        UserRequest userRequest = getUsers(1);
+    public List<User> getAllUsers() {
+        UserRequest userRequest = get(URI.create(GO_REST_API_BASE_URL + USER_RESOURCE + "?page=" + 1));
         return IntStream.range(2, userRequest.getMeta().getPagination().getPages() + 1)
                 .mapToObj(this::getUsers)
-                .map(UserRequest::getData)
                 .flatMap(List::stream)
                 .collect(Collectors.toList());
     }
 
-    public UserRequest getUsers(int page) {
-        return get(URI.create(GO_REST_API_BASE_URL + USER_RESOURCE + "?page=" + page));
+    public List<User> getUsers(int page) {
+        return get(URI.create(GO_REST_API_BASE_URL + USER_RESOURCE + "?page=" + page)).getData();
     }
 
     private UserRequest get(URI uri) {
