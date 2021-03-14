@@ -12,6 +12,9 @@ public class Main {
         Timer t = new Timer();
         UserApiPullTask mTask = new UserApiPullTask(new UserResource(), new UserEventProducer());
         t.scheduleAtFixedRate(mTask, 0, Duration.ofMinutes(5).toMillis());
+
+        Thread consumerThread = new Thread(new TestConsumer());
+        consumerThread.start();
     }
 
 }
