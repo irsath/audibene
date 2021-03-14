@@ -4,7 +4,7 @@
         <!-- encoders are assigned the type
              ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
         <encoder>
-            <pattern>%cyan(%d{HH:mm:ss.SSS}) %gray([%thread]) %highlight(%-5level) %magenta(%logger{36}) - %msg%n
+            <pattern>%blue(Producer app logs:) %cyan(%d{HH:mm:ss.SSS}) %gray([%thread]) %highlight(%-5level) %magenta(%logger{36}) - %msg%n
             </pattern>
         </encoder>
     </appender>
@@ -14,18 +14,18 @@
         <!-- encoders are assigned the type
              ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
         <encoder>
-            <pattern> %highlight(Consumer logs:) %cyan(%d{HH:mm:ss.SSS}) %gray([%thread]) %highlight(%-5level) %magenta(%logger{36}) - %msg%n
+            <pattern>%green(Consumer app logs:) %cyan(%d{HH:mm:ss.SSS}) %gray([%thread]) %highlight(%-5level) %magenta(%logger{36}) - %msg%n
             </pattern>
         </encoder>
     </appender>
 
     <logger name="org.apache.pulsar" additivity="false">
-        <level value="info"/>
+        <level value="error"/>
         <appender-ref ref="console"/>
     </logger>
 
     <logger name="com.audibene" additivity="false">
-        <level value="info"/>
+        <level value="debug"/>
         <appender-ref ref="console"/>
     </logger>
 
