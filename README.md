@@ -20,5 +20,5 @@ Code quality can be improved by:
 * tests (of course)
 * using a structured serialization format like Avro from which we can generate java classes
 * writing a proper pulsar connector (https://pulsar.apache.org/docs/en/io-overview/)
-* static codee analysis tool like sonar
+* static code analysis tool like sonar
 * test using locally hosted pulsar / mocking gorest api's
